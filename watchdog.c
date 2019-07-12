@@ -41,8 +41,7 @@ int main(void) {
 
       // Read voltage
       float voltage_fl;
-      int sample_loop;
-      for (sample_loop=150; sample_loop > 0 ; sample_loop --) {
+      for (int sample_loop=150; sample_loop > 0 ; sample_loop--) {
        	 ADCSRA |= (1 << ADSC);
        	 while (ADCSRA & (1 << ADSC) );
        	 voltage_fl = voltage_fl + ((ADCH - voltage_fl) / 20);
@@ -56,7 +55,6 @@ int main(void) {
             	  rpistat = 1;
                }
                count1 = 0;
-
             }
             else {
                count1 ++;
