@@ -6,7 +6,15 @@
 #define LED_PORT  PB3   // Pin 2
 #define POWER     PB1   // Pin 6
 #define RPI_OUT   PB2   // Pin 7
-#define RPI_IN    PB4   // Pin 3
+#define RPI_IN    PB0   // Pin 5
+/*
+ * 1 = reset (PB5
+ * 2 = LED   (PB3
+ * 3 = adc   (PB4
+ * 5 =       (PB0
+ * 6 = diamex off (PB1
+ * 7 = rpi   (PB2
+ */
 
 #define LOWER_VOLT   192.3 // 12.74V
 #define HIGHER_VOLT  194.4 // 12.75V
@@ -16,7 +24,7 @@
 #define OFF 0
 
 void initPorts() {
-   // init ADC
+   // init ADC PB4/Pin 3
    ADMUX =
       (1 << ADLAR) |
       (0 << REFS2) |
@@ -79,7 +87,18 @@ uint8_t getPower() {
 }
 
 uint8_t getPiStatus() {
-   return (PORTB & (1 << RPI_IN)) == 0;
+   if ((PINB & (1 << RPI_IN)) == 0)
+      return OFF;
+   else
+      return ON;
+}
+
+void delayBlink(uint16_t delay, uint8_t count) {
+   for (uint8_t i = 0; i < count; i++) {
+      PINB = (1<<LED_PORT);
+      for (uint8_t d = 0; d < delay; d++)
+         _delay_ms(10);
+   }
 }
 
 int main(void) {
@@ -92,33 +111,30 @@ int main(void) {
    while(1) {
       ledOn();
       voltage_fl = readADC();
+      ledOff();
 
       if (voltage_fl <= EMERGENCY_SHUTOFF) {
          powerOff();
-         _delay_ms(900);
-         ledOff();
-         _delay_ms(100);
+         delayBlink(4,25);
       }
       else if (voltage_fl > HIGHER_VOLT) {
          if (state_count > 2) {
             if (getPower() == OFF) {
                powerOn();
-               _delay_ms(2000);
+               _delay_ms(20000);
                ledOff();
             }
             else if (getPower() == ON && getPiStatus() == OFF) { // RPi didn't boot, reset power
+               ledOff();
                powerOff();
                _delay_ms(1000);
+               ledOn();
                powerOn();
-               _delay_ms(500);
-               ledOff();
-               _delay_ms(500);
+               _delay_ms(20000);
             }
             else {
                shutdownDisable();
-               _delay_ms(500);
-               ledOff();
-               _delay_ms(500);
+               delayBlink(50,2);
             }
          }
          else {
@@ -133,23 +149,11 @@ int main(void) {
       	 //if (state_count < -2) {
             if (getPiStatus() == ON) {
                shutdownEnable();
-               _delay_ms(100);
-               ledOff();
-               _delay_ms(100);
-               ledOn();
-               _delay_ms(100);
-               ledOff();
-               _delay_ms(700);
+               delayBlink(10,10);
             }
             else {
                powerOff();
-               _delay_ms(100);
-               ledOff();
-               _delay_ms(300);
-               ledOn();
-               _delay_ms(100);
-               ledOff();
-               _delay_ms(500);
+               delayBlink(20,5);
             }
       	 //}
          //else {
