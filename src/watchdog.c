@@ -1,6 +1,7 @@
 // vim: sw=3 sts=3 expandtab
 
 #include <avr/io.h>
+#include <avr/sleep.h>
 #include <util/delay.h>
 
 #define LED_PORT  PB3   // Pin 2
@@ -23,6 +24,8 @@
 #define ON  1
 #define OFF 0
 
+EMPTY_INTERRUPT(ADC_vect);
+
 void initPorts() {
    // init ADC PB4/Pin 3
    ADMUX =
@@ -32,14 +35,15 @@ void initPorts() {
       (0 << REFS0) |
       (0 << MUX3)  |
       (0 << MUX2)  |
-      (1 << MUX1)  |
+      (1 << MUX1)  | // PB4 / Pin3
       (0 << MUX0);
 
    ADCSRA =
-      (1 << ADEN)  |
+      (1 << ADEN)  | // Enable ADC
+      (1 << ADIE)  | // Enable ADC interrupt
       (1 << ADPS2) |
-      (1 << ADPS1) |
-      (0 << ADPS0);
+      (0 << ADPS1) |
+      (0 << ADPS0);  // 62,5kHz @ 1MHz
 
    // init outputs
    DDRB |= (1 << LED_PORT);
@@ -52,7 +56,9 @@ void initPorts() {
 float readADC() {
    float voltage_fl = 0;
    for (uint8_t sample_loop=150; sample_loop > 0 ; sample_loop--) {
-      ADCSRA |= (1 << ADSC);
+      //ADCSRA |= (1 << ADSC);
+      set_sleep_mode(SLEEP_MODE_ADC);
+      sleep_mode();
       while (ADCSRA & (1 << ADSC) );
       voltage_fl += (ADCH - voltage_fl) / 20;
    }
