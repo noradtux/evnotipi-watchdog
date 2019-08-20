@@ -27,6 +27,11 @@
 EMPTY_INTERRUPT(ADC_vect);
 
 void initPorts() {
+   PRR =
+      (1 << PRUSI)  | // Shutdown serial hardware
+      (1 << PRTIM0) | // Shutdown Timer0 hardware
+      (1 << PRTIM1);  // Shutdown Timer1 hardware
+
    // init ADC PB4/Pin 3
    ADMUX =
       (1 << ADLAR) |
