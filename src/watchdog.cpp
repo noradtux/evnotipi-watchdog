@@ -203,6 +203,9 @@ void loop() {
          Serial.println("EMERGENCY SHUTDOWN "+String(ADCLastVal));
          setColor(0x7f0000);
          setPowerOff();
+         delay(100);
+         setColor(0);
+         delay(800);
       }
    }
    else if (ADCLastVal > StartupVolt) {
@@ -243,7 +246,7 @@ void loop() {
             shutdownEnable();
             toggleRGB(0x7f7f00);
          }
-         else {
+         else if (getPower() == ON) {
             Serial.println("Power off Pi "+String(ADCLastVal));
             setPowerOff();
             setColor(0);
