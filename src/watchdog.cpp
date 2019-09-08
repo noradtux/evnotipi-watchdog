@@ -178,6 +178,14 @@ void toggleRGB(unsigned long int color) {
    }
 }
 
+unsigned char filteredAnalogRead(unsigned char channel) {
+   long int samples = 0;
+   for (unsigned int i = 0; i < 16; i++) {
+      samples += analogRead(channel);
+   }
+   return samples / 16;
+}
+
 int8_t StateCount = 0;
 int8_t EmergencyCount = 0;
 
@@ -187,7 +195,8 @@ void loop() {
    else
       ledOff();
 
-   ADCLastVal = analogRead(PIN_ADC);
+   ADCLastVal = filteredAnalogRead(PIN_ADC);
+   //Serial.println(ADCLastVal);
 
    if (PiWatchdog && now() - PiWatchdog > WatchdogTimeout) {
       setColor(0x7f7f00);
