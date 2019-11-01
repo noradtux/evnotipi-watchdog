@@ -8,3 +8,4 @@ Q1: BS170 (N-Channel FET)
 Q2: IRF5305 (P-Channel FET)
 U1: TSR2-2450 (2A DC-DC converter)
 
+Also: Adafruit Trinket M0
