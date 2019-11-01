@@ -1,0 +1,10 @@
+J1,J2: PinSocket 5 pin
+J3: 5 pin PinHeader
+J4: 2 pin PinHeader
+J5: 4 pin PinHeader (optional)
+R1: 100K
+R2,R3: 27K
+Q1: BS170 (N-Channel FET)
+Q2: IRF5305 (P-Channel FET)
+U1: TSR2-2450 (2A DC-DC converter)
+
