@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:EVNotipi-Watchdog_Trinket_M0-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -19,7 +18,7 @@ L Connector:Conn_01x05_Female J1
 U 1 1 5D62720F
 P 1500 1000
 F 0 "J1" H 1528 1026 50  0000 L CNN
-F 1 "Conn_Left" H 1528 935 50  0000 L CNN
+F 1 "Conn_M0_Left" H 1528 935 50  0000 L CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 1500 1000 50  0001 C CNN
 F 3 "~" H 1500 1000 50  0001 C CNN
 	1    1500 1000
@@ -30,7 +29,7 @@ L Connector:Conn_01x05_Female J2
 U 1 1 5D6276A2
 P 1500 1550
 F 0 "J2" H 1528 1576 50  0000 L CNN
-F 1 "Conn_Right" H 1528 1485 50  0000 L CNN
+F 1 "Conn_M0_Right" H 1528 1485 50  0000 L CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 1500 1550 50  0001 C CNN
 F 3 "~" H 1500 1550 50  0001 C CNN
 	1    1500 1550
@@ -180,17 +179,6 @@ F 3 "" H 1300 900 50  0001 C CNN
 	1    1300 900 
 	0    1    1    0   
 $EndComp
-$Comp
-L power:GND #PWR0104
-U 1 1 5D6407C6
-P 3200 1200
-F 0 "#PWR0104" H 3200 950 50  0001 C CNN
-F 1 "GND" V 3205 1072 50  0000 R CNN
-F 2 "" H 3200 1200 50  0001 C CNN
-F 3 "" H 3200 1200 50  0001 C CNN
-	1    3200 1200
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	2900 2300 3350 2300
 Wire Wire Line
@@ -266,7 +254,7 @@ L Connector:Conn_01x04_Male J5
 U 1 1 5D6BB1FE
 P 3950 1250
 F 0 "J5" H 4058 1531 50  0000 C CNN
-F 1 "Conn_01x04_Male" H 4058 1440 50  0000 C CNN
+F 1 "Conn_i2c" H 4058 1440 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 3950 1250 50  0001 C CNN
 F 3 "~" H 3950 1250 50  0001 C CNN
 	1    3950 1250
@@ -287,6 +275,17 @@ F 1 "GND" V 4155 1322 50  0000 R CNN
 F 2 "" H 4150 1450 50  0001 C CNN
 F 3 "" H 4150 1450 50  0001 C CNN
 	1    4150 1450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 5D6407C6
+P 3200 1200
+F 0 "#PWR0104" H 3200 950 50  0001 C CNN
+F 1 "GND" V 3205 1072 50  0000 R CNN
+F 2 "" H 3200 1200 50  0001 C CNN
+F 3 "" H 3200 1200 50  0001 C CNN
+	1    3200 1200
 	0    -1   -1   0   
 $EndComp
 $EndSCHEMATC
