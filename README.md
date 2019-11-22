@@ -11,3 +11,6 @@ Plugging in patch cables in top of the CAN hat uses lots of space which the case
 
 Available here: https://aisler.net/p/ODQEXOXX
 
+
+I suggest using a 10cm female-female jumper cable with (at least) 5 pins.
+
