@@ -82,90 +82,90 @@ Pi_Running
 $Comp
 L Regulator_Switching:TSR_1-2450 U1
 U 1 1 5D62B8BF
-P 1400 2600
-F 0 "U1" H 1400 2967 50  0000 C CNN
-F 1 "TSR_2-2450" H 1400 2876 50  0000 C CNN
-F 2 "Converter_DCDC:Converter_DCDC_TRACO_TSR-1_THT" H 1400 2450 50  0001 L CIN
-F 3 "http://www.tracopower.com/products/tsr1.pdf" H 1400 2600 50  0001 C CNN
-	1    1400 2600
+P 1800 2600
+F 0 "U1" H 1800 2967 50  0000 C CNN
+F 1 "TSR_2-2450" H 1800 2876 50  0000 C CNN
+F 2 "Converter_DCDC:Converter_DCDC_TRACO_TSR-1_THT" H 1800 2450 50  0001 L CIN
+F 3 "http://www.tracopower.com/products/tsr1.pdf" H 1800 2600 50  0001 C CNN
+	1    1800 2600
 	1    0    0    -1  
 $EndComp
-Text GLabel 1800 2500 2    50   Output ~ 0
+Text GLabel 2200 2500 2    50   Output ~ 0
 VCC5V
 $Comp
 L Transistor_FET:BS170 Q1
 U 1 1 5D62DCCF
-P 2800 2500
-F 0 "Q1" H 3006 2546 50  0000 L CNN
-F 1 "BS170" H 3006 2455 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3000 2425 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BS/BS170.pdf" H 2800 2500 50  0001 L CNN
-	1    2800 2500
+P 3200 2500
+F 0 "Q1" H 3406 2546 50  0000 L CNN
+F 1 "BS170" H 3406 2455 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3400 2425 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BS/BS170.pdf" H 3200 2500 50  0001 L CNN
+	1    3200 2500
 	1    0    0    -1  
 $EndComp
 $Comp
 L Transistor_FET:IRF4905 Q2
 U 1 1 5D63050F
-P 3750 2500
-F 0 "Q2" H 3956 2546 50  0000 L CNN
-F 1 "IRF5305" H 3956 2455 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown" H 3950 2425 50  0001 L CIN
-F 3 "http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c" H 3750 2500 50  0001 L CNN
-	1    3750 2500
+P 4150 2500
+F 0 "Q2" H 4356 2546 50  0000 L CNN
+F 1 "IRF5305" H 4356 2455 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown" H 4350 2425 50  0001 L CIN
+F 3 "http://www.infineon.com/dgdl/irf4905.pdf?fileId=5546d462533600a4015355e32165197c" H 4150 2500 50  0001 L CNN
+	1    4150 2500
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R3
 U 1 1 5D632A96
-P 3500 2800
-F 0 "R3" V 3707 2800 50  0000 C CNN
-F 1 "R27K" V 3616 2800 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 3430 2800 50  0001 C CNN
-F 3 "~" H 3500 2800 50  0001 C CNN
-	1    3500 2800
+P 3900 2800
+F 0 "R3" V 4107 2800 50  0000 C CNN
+F 1 "R27K" V 4016 2800 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 3830 2800 50  0001 C CNN
+F 3 "~" H 3900 2800 50  0001 C CNN
+	1    3900 2800
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	3550 2500 3350 2500
+	3950 2500 3750 2500
 Wire Wire Line
-	3350 2800 3350 2500
+	3750 2800 3750 2500
 Wire Wire Line
-	3650 2800 3850 2800
+	4050 2800 4250 2800
 Wire Wire Line
-	3850 2800 3850 2700
+	4250 2800 4250 2700
 Wire Wire Line
-	3850 3000 3850 2800
-Connection ~ 3850 2800
+	4250 3000 4250 2800
+Connection ~ 4250 2800
 Wire Wire Line
-	3850 2300 3850 2150
-Text GLabel 3850 3000 0    50   Input ~ 0
+	4250 2300 4250 2150
+Text GLabel 4250 3000 0    50   Input ~ 0
 VCC5V
-Text GLabel 3850 2150 2    50   Output ~ 0
+Text GLabel 4250 2150 2    50   Output ~ 0
 VCC_Pi
 Text GLabel 1300 1000 0    50   Output ~ 0
 5V_ENA
-Text GLabel 2600 2500 0    50   Input ~ 0
+Text GLabel 3000 2500 0    50   Input ~ 0
 5V_ENA
 $Comp
 L power:GND #PWR0101
 U 1 1 5D63D76F
-P 2900 2700
-F 0 "#PWR0101" H 2900 2450 50  0001 C CNN
-F 1 "GND" H 2905 2527 50  0000 C CNN
-F 2 "" H 2900 2700 50  0001 C CNN
-F 3 "" H 2900 2700 50  0001 C CNN
-	1    2900 2700
+P 3300 2700
+F 0 "#PWR0101" H 3300 2450 50  0001 C CNN
+F 1 "GND" H 3305 2527 50  0000 C CNN
+F 2 "" H 3300 2700 50  0001 C CNN
+F 3 "" H 3300 2700 50  0001 C CNN
+	1    3300 2700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0102
 U 1 1 5D63F97F
-P 1400 2800
-F 0 "#PWR0102" H 1400 2550 50  0001 C CNN
-F 1 "GND" H 1405 2627 50  0000 C CNN
-F 2 "" H 1400 2800 50  0001 C CNN
-F 3 "" H 1400 2800 50  0001 C CNN
-	1    1400 2800
+P 1800 2800
+F 0 "#PWR0102" H 1800 2550 50  0001 C CNN
+F 1 "GND" H 1805 2627 50  0000 C CNN
+F 2 "" H 1800 2800 50  0001 C CNN
+F 3 "" H 1800 2800 50  0001 C CNN
+	1    1800 2800
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -180,10 +180,10 @@ F 3 "" H 1300 900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2900 2300 3350 2300
+	3300 2300 3750 2300
 Wire Wire Line
-	3350 2300 3350 2500
-Connection ~ 3350 2500
+	3750 2300 3750 2500
+Connection ~ 3750 2500
 $Comp
 L power:+12V #PWR0105
 U 1 1 5D654254
@@ -195,14 +195,14 @@ F 3 "" H 4300 800 50  0001 C CNN
 	1    4300 800 
 	0    1    1    0   
 $EndComp
-Text GLabel 4300 800  0    50   UnSpc ~ 0
+Text GLabel 4200 750  0    50   UnSpc ~ 0
 VCC12V
 Text GLabel 3200 1600 2    50   Output ~ 0
 VCC12V
-Text GLabel 1000 2500 0    50   Input ~ 0
+Text GLabel 950  2500 0    50   Input ~ 0
 VCC12V
 Text GLabel 1000 3500 0    50   Input ~ 0
-VCC12V
+VCCADC
 $Comp
 L power:GND #PWR0106
 U 1 1 5D6649C0
@@ -288,4 +288,43 @@ F 3 "" H 3200 1200 50  0001 C CNN
 	1    3200 1200
 	0    -1   -1   0   
 $EndComp
+$Comp
+L Device:D_Schottky D1
+U 1 1 5DEE2262
+P 1100 2500
+F 0 "D1" H 1100 2284 50  0000 C CNN
+F 1 "D_Schottky" H 1100 2375 50  0000 C CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P2.54mm_Vertical_AnodeUp" H 1100 2500 50  0001 C CNN
+F 3 "~" H 1100 2500 50  0001 C CNN
+	1    1100 2500
+	-1   0    0    1   
+$EndComp
+Text GLabel 4200 850  0    50   UnSpc ~ 0
+VCCADC
+Wire Wire Line
+	4200 750  4300 750 
+Wire Wire Line
+	4300 750  4300 800 
+Wire Wire Line
+	4200 850  4300 850 
+Wire Wire Line
+	4300 850  4300 800 
+Connection ~ 4300 800 
+$Comp
+L Device:CP C1
+U 1 1 5DEEB6C2
+P 1250 2650
+F 0 "C1" H 1368 2696 50  0000 L CNN
+F 1 "CP" H 1368 2605 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 1288 2500 50  0001 C CNN
+F 3 "~" H 1250 2650 50  0001 C CNN
+	1    1250 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 2500 1250 2500
+Connection ~ 1250 2500
+Wire Wire Line
+	1800 2800 1250 2800
+Connection ~ 1800 2800
 $EndSCHEMATC
