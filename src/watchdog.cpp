@@ -21,15 +21,15 @@
 Adafruit_DotStar Pixel = Adafruit_DotStar(
   NUMPIXELS, INTERNAL_DS_DATA, INTERNAL_DS_CLK, DOTSTAR_BGR);
 
-unsigned char ShutdownVolt = 208;   // 12.74V
-unsigned char StartupVolt  = 210;   // 12.75V
-unsigned char EmergencyShutoffVolt = 196; // 11.9V
+uint8_t ShutdownVolt = 208;   // 12.74V
+uint8_t StartupVolt  = 210;   // 12.75V
+uint8_t EmergencyShutoffVolt = 196; // 11.9V
 
-unsigned char ADCLastVal = 0;
+uint8_t ADCLastVal = 0;
 time_t PiWatchdog = 0;
 const time_t WatchdogTimeout = 300; // 5 minutes
-unsigned char ReadRegister = 0;
-unsigned char ShutdownFlag = 0;
+uint8_t ReadRegister = 0;
+uint8_t ShutdownFlag = 0;
 
 void TimerCallback();
 
@@ -65,7 +65,7 @@ void i2c_onRequest() {
 }
 
 void i2c_onReceive(int byteCount) {
-   unsigned char byte = Wire.read();
+   uint8_t byte = Wire.read();
    Serial.print("Received I2C count(");
    Serial.print(byteCount);
    Serial.print(") data(");
@@ -178,9 +178,9 @@ void toggleRGB(unsigned long int color) {
    }
 }
 
-unsigned char filteredAnalogRead(unsigned char channel) {
-   long int samples = 0;
-   for (unsigned int i = 0; i < 16; i++) {
+uint8_t filteredAnalogRead(unsigned char channel) {
+   uint16_t samples = 0;
+   for (uint8_t i = 0; i < 16; i++) {
       samples += analogRead(channel);
    }
    return samples / 16;
