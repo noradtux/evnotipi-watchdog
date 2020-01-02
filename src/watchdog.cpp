@@ -96,12 +96,21 @@ void i2c_onReceive(int byteCount) {
          break;
       case 0x21:
          StartupVolt = Wire.read();
+         Serial.print("Received StartupVolt(");
+         Serial.print(StartupVolt);
+         Serial.println(")");
          break;
       case 0x22:
          ShutdownVolt = Wire.read();
+         Serial.print("Received ShutdownVolt(");
+         Serial.print(ShutdownVolt);
+         Serial.println(")");
          break;
       case 0x23:
          EmergencyShutoffVolt = Wire.read();
+         Serial.print("Received EmergencyShutoffVolt(");
+         Serial.print(EmergencyShutoffVolt);
+         Serial.println(")");
          break;
    }
 
