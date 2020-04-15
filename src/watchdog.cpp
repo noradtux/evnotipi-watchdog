@@ -6,9 +6,9 @@
 #include <Adafruit_DotStar.h>
 
 #if defined(ARDUINO_ARCH_SAMD)
- #define PIN_ADC   PIN_A0
- #define PIN_5VENA PIN_A4
- #define PIN_PIRUN PIN_A3
+ #define PIN_ADC   PIN_A0  // SAMD pin 3
+ #define PIN_5VENA PIN_A4  // SAMD pin 7
+ #define PIN_PIRUN PIN_A3  // SAMD pin 8
 #else
  #error Unsupported hardware
 #endif
