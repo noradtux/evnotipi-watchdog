@@ -233,7 +233,7 @@ void loop() {
             Serial.println("Power on Pi "+String(ADCLastVal));
             setColor(0x007f00);
             setPowerOn();
-            delay(20000);
+            delay(60000);  // Give Pi time to boot
          }
          else if (getPower() == ON && getPiStatus() == OFF) { // RPi didn't boot, reset setPower
             Serial.println("Reset Pi "+String(ADCLastVal));
@@ -242,7 +242,7 @@ void loop() {
             delay(1000);
             setColor(0x007f00);
             setPowerOn();
-            delay(20000);
+            delay(60000);  // Give Pi time to boot 
          }
          else {
             //Serial.println("Pi running "+String(ADCLastVal));
