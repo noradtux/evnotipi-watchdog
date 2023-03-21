@@ -10,7 +10,7 @@ You will need PlatformIO for building and installing the firmware. See https://d
 To build and upload attach the Trinket M0 by USB and run ```pio run -t upload```.
 
 # Easy adaptor for connecting the watchdog to the Pi
-Plugging in patch cables in top of the CAN hat uses lots of space which the case does not provide. So the original solution was to bend the pins to save some verical space. Now there is a simple adaptor board which saves some millimeters and also allows connecting through a 5 pole ribbon cable.
+Plugging in patch cables in top of the CAN hat uses lots of space which the case does not provide. So the original solution was to bend the pins to save some verical space. Now there is a simple adaptor board which saves some millimeters and also allows connecting through a 5 pin ribbon cable.
 
 Available here: https://aisler.net/p/ODQEXOXX
 
