@@ -217,7 +217,7 @@ void loop() {
 
    if (ADCLastVal <= EmergencyShutoffVolt) {
       EmergencyCount++;
-      if (EmergencyCount > 5) {
+      if (EmergencyCount > 50) {
          Serial.println("EMERGENCY SHUTDOWN "+String(ADCLastVal));
          setColor(0x7f0000);
          setPowerOff();
