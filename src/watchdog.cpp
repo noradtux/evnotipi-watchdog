@@ -34,6 +34,8 @@ uint8_t ShutdownFlag = 0;
 void TimerCallback();
 
 void i2c_onRequest() {
+   if (PiWatchdog) PiWatchdog = now();
+
    Serial.print("Received I2C Request (");
    Serial.print(ReadRegister);
    Serial.println(")");
@@ -60,11 +62,11 @@ void i2c_onRequest() {
          Wire.write(EmergencyShutoffVolt);
          break;
    }
-
-   if (PiWatchdog) PiWatchdog = now();
 }
 
 void i2c_onReceive(int byteCount) {
+   if (PiWatchdog) PiWatchdog = now();
+
    uint8_t byte = Wire.read();
    Serial.print("Received I2C count(");
    Serial.print(byteCount);
@@ -208,6 +210,7 @@ void loop() {
    //Serial.println(ADCLastVal);
 
    if (PiWatchdog && now() - PiWatchdog > WatchdogTimeout) {
+      Serial.println("PiWatchdog timeout triggered! Resetting system");
       setColor(0x7f7f00);
       setPowerOff();
       delay(300);
@@ -236,13 +239,20 @@ void loop() {
             delay(60000);  // Give Pi time to boot
          }
          else if (getPower() == ON && getPiStatus() == OFF) { // RPi didn't boot, reset setPower
-            Serial.println("Reset Pi "+String(ADCLastVal));
-            setColor(0x7f7f00);
-            setPowerOff();
-            delay(1000);
-            setColor(0x007f00);
-            setPowerOn();
-            delay(60000);  // Give Pi time to boot 
+            Serial.println("Reset Pi?");
+            delay(5000);
+            if (getPower() == ON && getPiStatus() == OFF) {
+               // ok, Pi is not just rebooting, trigger restart
+               Serial.println("--> yes, restart");
+               setColor(0x7f7f00);
+               setPowerOff();
+               delay(1000);
+               setColor(0x007f00);
+               setPowerOn();
+               delay(60000);  // Give Pi time to boot 
+            }
+            else
+               Serial.println("--> no, move on");
          }
          else {
             //Serial.println("Pi running "+String(ADCLastVal));
