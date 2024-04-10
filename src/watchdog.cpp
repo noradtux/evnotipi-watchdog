@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-#include <Time.h>
+#include <TimeLib.h>
 #include <Adafruit_DotStar.h>
 
 #if defined(ARDUINO_ARCH_SAMD)
